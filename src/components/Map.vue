@@ -4,13 +4,11 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   // type inference enabled
-  props: {
-   
-  },
+  
   data() {
     return {
       map: {},
-    }
+    } 
   },
   mounted() {
     console.log('this.map', this.map)

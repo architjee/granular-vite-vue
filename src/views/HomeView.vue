@@ -2,14 +2,16 @@
 import MapVue from '../components/Map.vue'
 console.log('checking the window object for L')
 import { defineComponent } from 'vue'
+import SearchBox from '@/components/SearchBox.vue'
 
 export default defineComponent({
   // type inference enabled
-  components:{
-    MapVue
+  components: {
+    MapVue,
+    SearchBox
   },
   props: {
-   
+
   },
   data() {
     return {
@@ -17,7 +19,12 @@ export default defineComponent({
     }
   },
   mounted() {
-   
+
+  },
+  methods:{
+    cons(payload : any) {
+      console.log(payload, '~~even caught with the following payload')
+    }
   }
 })
 </script>
@@ -33,6 +40,10 @@ export default defineComponent({
     </section>
 
     <MapVue></MapVue>
-   
+    <div class="level mt-6">
+      <p class="level-item has-text-centered">
+        <a class="link is-info"><SearchBox @submitSearchEvent="cons"></SearchBox></a>
+      </p>
+    </div>
   </main>
 </template>
