@@ -1,21 +1,23 @@
 <script lang="ts">
 import MapVue from '../components/Map.vue'
-console.log('checking the window object for L')
 import { defineComponent } from 'vue'
 import SearchBox from '@/components/SearchBox.vue'
-
+import SearchResult from '@/components/SearchResult.vue'
 export default defineComponent({
   // type inference enabled
   components: {
     MapVue,
-    SearchBox
+    SearchBox,
+    SearchResult
   },
   props: {
 
   },
   data() {
     return {
-      count: 1
+      count: 1,
+      searchQuery: '',
+      searchResults : ['boston ma', 'boston usa', 'boston uk'],
     }
   },
   mounted() {
@@ -44,6 +46,9 @@ export default defineComponent({
       <p class="level-item has-text-centered">
         <a class="link is-info"><SearchBox @submitSearchEvent="cons"></SearchBox></a>
       </p>
+    </div>
+    <div class="container">
+      <SearchResult class="my-3" v-for="result in searchResults" :cardContent="result"></SearchResult>
     </div>
   </main>
 </template>
