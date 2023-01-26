@@ -4,14 +4,15 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   // type inference enabled
-
+  props:['selectedLocation'],
   data() {
     return {
       map: {},
+      
     }
   },
   mounted() {
-    this.map = L.map('map').setView([51.505, -0.09], 13)
+    this.map = L.map('map').setView([this.selectedLocation.lat, this.selectedLocation.lon],13)
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'

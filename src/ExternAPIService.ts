@@ -1,4 +1,4 @@
-interface ResultantValue {
+export interface ResultantValue {
     place_id: number;
     licence: string;
     osm_type: string;

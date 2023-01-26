@@ -14,11 +14,15 @@
 
 <script lang="ts">
 export default {
+  props: ['initialLocation'],
   data(){
    return {
      searchLocation: 'Boston MA'
 
    }
+  },
+  mounted(){
+    this.searchLocation = this.initialLocation
   },
   methods: {
     submitMySearch() {
