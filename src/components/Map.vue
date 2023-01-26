@@ -1,5 +1,5 @@
 <script lang="ts">
-import L from 'leaflet/dist/leaflet.js'
+import * as L from 'leaflet/dist/leaflet.js'
 import { defineComponent } from 'vue'
 
 export default defineComponent({

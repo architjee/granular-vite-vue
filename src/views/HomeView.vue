@@ -108,7 +108,8 @@ export default defineComponent({
       } catch (error) {
         console.log('An error occured while trying to find the placeid')
       }
-      return null;
+      // Fallback to default value
+      return CONFIG_FILE.SEARCHREUSLTS_INIT_VALUE[0]
     },
     async copyToClipboard() {
       let complete_url = window.location.href
