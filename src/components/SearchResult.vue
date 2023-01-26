@@ -6,7 +6,7 @@
                     {{cardContent.display_name}}
                 </h2>
                 <p>
-                  Coordinates are : Lat:{{ cardContent.lat }} ,Lon:{{ cardContent.lon }}
+                  Coordinates are : Lat : {{ cardContent.lat }} ,Lon : {{ cardContent.lon }}
                 </p>
             </div>
         </div>

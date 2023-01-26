@@ -53,7 +53,7 @@ export default defineComponent({
       } catch (error) {
         console.error(error);
       }
-      return 
+      return
     },
     async selectLocationOverMap(selectedLocation: ExternAPIService.ResultantValue) {
       console.log('Selecting location over map as', selectedLocation)
@@ -74,17 +74,17 @@ export default defineComponent({
       }
       console.log('This is the current parama', this.$route.params)
       try {
-        if (location && location!=="undefined") {
+        if (location && location !== "undefined") {
           // We will try setting the search query to 
           console.log('We are also getting location', location)
           this.searchQuery = location;
           await this.fetchExternData();
           try {
-            if(place_id && place_id!=="undefined"){
+            if (place_id && place_id !== "undefined") {
               console.log('We are also getting place id as', place_id)
               let prospective_place = this.findPlaceByPlaceId(place_id)
               console.log(prospective_place)
-              if(prospective_place){
+              if (prospective_place) {
 
                 await this.selectLocationOverMap(prospective_place)
               }
@@ -98,20 +98,24 @@ export default defineComponent({
 
       }
     },
-    findPlaceByPlaceId(place_id: string): ExternAPIService.ResultantValue{
+    findPlaceByPlaceId(place_id: string): ExternAPIService.ResultantValue {
       try {
-        for(let index_it=0; index_it<this.searchResults.length; index_it++)
-        {
-            if (String(this.searchResults[index_it]["place_id"])==place_id){
-              return this.searchResults[index_it]
-            }
+        for (let index_it = 0; index_it < this.searchResults.length; index_it++) {
+          if (String(this.searchResults[index_it]["place_id"]) == place_id) {
+            return this.searchResults[index_it]
+          }
         }
       } catch (error) {
         console.log('An error occured while trying to find the placeid')
       }
       return null;
+    },
+    async copyToClipboard() {
+      let complete_url = window.location.href
+      await navigator.clipboard.writeText(complete_url);
     }
   }
+
 })
 </script>
 
@@ -127,15 +131,20 @@ export default defineComponent({
 
     <MapVue :selectedLocation="selectedLocation" :key="selectedLocation.place_id"></MapVue>
     <div class="level mt-6">
+      <p class="level-item">
+        <button @click="copyToClipboard()">Share URL | Copy URL to clipboard</button>
+      </p>
       <p class="level-item has-text-centered">
         <a class="link is-info">
-          <SearchBox @submitSearchEvent="selectLocation" :initialLocation="searchQuery"></SearchBox>
+          <SearchBox @submitSearchEvent="selectLocation" :initialLocation="searchQuery" :key="searchQuery"></SearchBox>
         </a>
       </p>
     </div>
     <div class="container">
-      <SearchResult class="my-3" v-for="result in searchResults" :cardContent="result"
+      <a class="link">
+        <SearchResult class="my-3" v-for="result in searchResults" :cardContent="result"
         @click="selectLocationOverMap(result)"></SearchResult>
-    </div>
+      </a>
+      </div>
   </main>
 </template>
