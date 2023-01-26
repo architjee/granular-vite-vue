@@ -1,6 +1,13 @@
 # granular-vite-vue
 
-This template should help get you started developing with Vue 3 in Vite.
+This is the same assignment asked by granular, but implemented in Vue and TypeScript.
+
+Axios is used to make get call to the external API,
+
+We have a config file with fallback data
+and externAPIService with a typescript interface to interact with the external API
+
+App is divided into several basic components, Map, SearchBox and SearchResult(s)
 
 ## Recommended IDE Setup
 
@@ -27,7 +34,7 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+## Compile and Hot-Reload for Development
 
 ```sh
 npm run dev
@@ -38,3 +45,4 @@ npm run dev
 ```sh
 npm run build
 ```
+> Build folder is dist/
